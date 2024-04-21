@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Podcast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+          integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            color: #3a3a3a;
+        }
+
+        #main {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .bg {
+            background: url("/bg.jpg") center no-repeat;
+            background-size: cover;
+            -webkit-filter: blur(10px);
+            -moz-filter: blur(10px);
+            -o-filter: blur(10px);
+            -ms-filter: blur(10px);
+            filter: blur(10px);
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            opacity: .5;
+            background-blend-mode: color;
+        }
+
+        .podcast {
+            z-index: 100;
+            position: relative;
+            width: 85%;
+            height: 85%;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .thumbnail {
+            width: 400px;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        }
+
+        .thumbnail img {
+            position: relative;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        .podcast .top {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .top .author {
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            gap: 10px;
+        }
+
+        .top .author .name {
+            text-transform: uppercase;
+            font-size: 40px;
+            font-weight: 600;
+        }
+
+        .top .author .title {
+            font-weight: 400;
+            color: #7f7f7f;
+            font-size: 20px;
+        }
+
+        .bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .bottom .producer {
+            font-size: 25px;
+            font-weight: 400;
+        }
+
+        .bottom .music-name {
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 30px;
+        }
+        .bottom .foundation {
+            display: flex;
+            gap: 30px;
+            margin-top: 70px;
+            letter-spacing: 1px;
+        }
+        .bottom .foundation .soundcloud,
+        .bottom .foundation .apple-music,
+        .bottom .foundation .spotify-podcast {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #bebebe;
+            padding: 5px 10px;
+            width: 240px;
+            border-radius: 8px;
+        }
+
+        .bottom .foundation .foundation-name {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .bottom .foundation .soundcloud .icon,
+        .bottom .foundation .apple-music .icon,
+        .bottom .foundation .spotify-podcast .icon {
+            font-size: 40px;
+        }
+
+        .bottom .foundation .soundcloud .listen-on,
+        .bottom .foundation .apple-music .listen-on,
+        .bottom .foundation .spotify-podcast .listen-on {
+            color: #5b5b5b;
+        }
+
+        .bottom .foundation .soundcloud .icon {
+            color: #f50;
+        }
+
+        .bottom .foundation .apple-music .icon {
+            color: #FB415B;
+        }
+
+        .bottom .foundation .spotify-podcast .icon {
+            color: #1DD05D;
+        }
+
+        .bottom .foundation .soundcloud .foundation-name .name,
+        .bottom .foundation .apple-music .foundation-name .name,
+        .bottom .foundation .spotify-podcast .foundation-name .name {
+            font-weight: 700;
+        }
+
+        .logo {
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="./html2canvas.min.js"></script>
+</head>
+<body>
+<div id="main">
+    <div class="bg"></div>
+    <div class="podcast">
+        <div class="top">
+            <div class="thumbnail">
+                <img src="./artworks.jpg" alt="">
+            </div>
+            <div class="author">
+                <div class="name">SlowV <img src="./heart-icon.png" alt="" width="23px" style="margin: 0 5px;"> Music</div>
+                <div class="title">Nghe nhạc để ngắm hình</div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="producer">
+                H Thái
+            </div>
+            <div class="music-name">
+                Còn Gì Đau Hơn Chữ Đã Từng - H Thái Remix
+            </div>
+            <div class="description">
+                Còn Gì Đau Hơn Chữ Đã Từng - Quân AP
+            </div>
+            <div class="foundation">
+                <div class="soundcloud">
+                    <div class="icon">
+                        <i class="fa fa-soundcloud" aria-hidden="true"></i>
+                    </div>
+                    <div class="foundation-name">
+                        <div class="listen-on">
+                            Available on
+                        </div>
+                        <div class="name">
+                            Soundcloud
+                        </div>
+                    </div>
+                </div>
+                <div class="apple-music">
+                    <div class="icon">
+                        <i class="fa fa-apple" aria-hidden="true"></i>
+                    </div>
+                    <div class="foundation-name">
+                        <div class="listen-on">
+                            Listen on
+                        </div>
+                        <div class="name">
+                            Apple Music
+                        </div>
+                    </div>
+                </div>
+                <div class="spotify-podcast">
+                    <div class="icon">
+                        <i class="fa fa-spotify" aria-hidden="true"></i>
+                    </div>
+                    <div class="foundation-name">
+                       <div class="listen-on">
+                           Listen on
+                       </div>
+                        <div class="name">
+                            Spotify Podcast
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img class="logo" src="./logo.png" alt="" width="150">
+    </div>
+</div>
+<div id="previewImage"></div>
+<button id="export">Export to Canvas and Download</button>
+</body>
+<script>
+    $(document).ready(function () {
+        const content = $("#main")
+        let getCanvas;
+        $("#export").click(function () {
+            html2canvas(content, {
+                onrendered: function (canvas) {
+                    $("#previewImage").append(canvas);
+                    getCanvas = canvas;
+                }
+            });
+        })
+    })
+    function exportToCanvasAndDownload() {
+        const content = document.getElementById('main');
+
+        // Sử dụng html2canvas để chuyển đổi nội dung của div thành canvas
+        html2canvas(content).then(function(canvas) {
+            // Tạo một URL từ canvas
+            const url = canvas.toDataURL();
+            // Tạo một phần tử a để tải xuống hình ảnh
+            const link = document.createElement('a');
+            link.download = 'podcast-amthambenem.png'; // Đặt tên tệp
+            link.href = url;
+            // Kích hoạt sự kiện nhấp chuột tự động
+            link.click();
+        });
+    }
+</script>
+</html>
