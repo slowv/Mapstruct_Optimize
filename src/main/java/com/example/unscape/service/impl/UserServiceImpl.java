@@ -22,4 +22,11 @@ public class UserServiceImpl implements UserService {
                 .map(userMapper::toDto)
                 .orElseThrow(EntityNotFoundException::new);
     }
+
+    @Override
+    public UserDTO create(@NonNull final UserDTO dto) {
+        return this.userMapper.toDto(
+                userRepository.save(this.userMapper.toEntity(dto))
+        );
+    }
 }

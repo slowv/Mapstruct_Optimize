@@ -1,4 +1,4 @@
-package com.example.unscape.utils;
+package com.example.unscape.common.utils;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

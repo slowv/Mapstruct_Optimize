@@ -6,4 +6,6 @@ import org.springframework.lang.NonNull;
 public interface UserService {
 
     UserDTO getUser(@NonNull final Long id);
+
+    UserDTO create(@NonNull final UserDTO dto);
 }
