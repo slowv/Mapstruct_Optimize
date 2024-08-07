@@ -6,6 +6,7 @@ import com.example.unscape.validation.FileType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import org.apache.http.entity.ContentType;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -17,9 +18,9 @@ public class UserDTO {
     @NotBlank(message = "Không được để trống trường {fullName}")
     private String fullName;
 
-    @FileSize(message = "File ảnh không được lớn quá 2MB")
+    @FileSize(maxSize = 15000000, message = "File ảnh không được lớn quá 2MB")
     @FileNotEmpty(message = "Trường {avatar} không được để trống.")
-    @FileType(message = "Định dạng file phải là JPGE | PNG")
+    @FileType(contentType = {"image/png", "image/jpg", "image/jpeg"}, message = "Định dạng file phải là JPGE | PNG")
     private MultipartFile avatar;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)

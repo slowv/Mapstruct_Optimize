@@ -16,6 +16,8 @@ import java.lang.annotation.Target;
 public @interface FileSize {
     String message() default "File too large";
 
+    int maxSize();
+
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};

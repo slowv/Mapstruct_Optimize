@@ -15,6 +15,8 @@ import java.lang.annotation.Target;
 public @interface FileType {
     String message() default "Invalid file type";
 
+    String[] contentType();
+
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};

@@ -7,17 +7,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 public class FileSizeHandle implements ConstraintValidator<FileSize, MultipartFile> {
-    //max size 15mb
-    private static final int MAX_SIZE_IMAGE_SIZE = 2000000;
+    private int maxSize;
 
     @Override
     public void initialize(FileSize constraintAnnotation) {
         // Implements code here
+        this.maxSize = constraintAnnotation.maxSize();
     }
 
     @Override
     public boolean isValid(MultipartFile value, ConstraintValidatorContext context) {
-        return value == null || value.getSize() <= MAX_SIZE_IMAGE_SIZE;
+        return value == null || value.getSize() <= this.maxSize;
     }
 
 }
